@@ -1,0 +1,27 @@
+.mdui-appbar .mdui-color-theme {
+    color: #fff !important;
+}
+#start {
+    height: 10rem;
+    font-size: 5rem;
+}
+#data-add {
+    padding-top: 0;
+}
+#data-add input {
+    display: inline-block;
+}
+form {
+    display: flex;
+}
+form #input-box {
+    flex: auto;
+    margin-right: 2px;
+}
+form #actions {
+    flex: none;
+    margin-left: 2px;
+}
+form #actions .mdui-btn {
+    min-width: auto;
+}

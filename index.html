@@ -1,0 +1,90 @@
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽奖机 - 0And1Story</title>
+    <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
+    <script src="https://cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+    <link rel="stylesheet" href="style/main.css">
+    <script src="js/common.js"></script>
+</head>
+<body class="mdui-theme-primary-blue mdui-theme-accent-blue">
+    <div class="mdui-appbar">
+        <div class="mdui-toolbar mdui-color-theme">
+            <a href="javascript:;" class="mdui-typo-headline">0And1Story</a>
+            <a href="javascript:;" class="mdui-typo-title">抽奖机</a>
+            <div class="mdui-toolbar-spacer"></div>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#about-dialog'}" mdui-tooltip="{content: '关于'}"><i class="mdui-icon material-icons">info_outline</i></a>
+        </div>
+    </div>
+    <main class="mdui-container-fluid mdui-m-y-3">
+        <div class="mdui-col-md-8 mdui-col-offset-md-2">
+            <div class="mdui-card mdui-hoverable">
+                <div class="mdui-card-primary">
+                    <div class="mdui-card-primary-title">抽奖机</div>
+                </div>
+                <div class="mdui-card-content mdui-typo">
+                    <div class="mdui-table-fluid">
+                        <table class="mdui-table" id="data">
+                            <thead>
+                                <tr>
+                                    <th>数据</th>
+                                    <th class="mdui-table-col-numeric">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <form action="javascript:addData();">
+                        <div id="input-box">
+                            <div class="mdui-textfield" id="data-add">
+                                <input class="mdui-textfield-input" type="text" placeholder="数据(批量：可用空格、逗号等分割)">
+                            </div>
+                        </div>
+                        <div id="actions">
+                            <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-hidden-sm-down" id="add" type="submit">添加</button>
+                            <button class="mdui-btn mdui-color-red-accent mdui-ripple mdui-hidden-sm-down" id="clear" mdui-dialog="{target: '#warning-dialog'}" type="button">清除所有</button>
+                            <button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-hidden-md-up" id="add" type="submit"><i class="mdui-icon material-icons">add</i></button>
+                            <button class="mdui-btn mdui-btn-icon mdui-color-red-accent mdui-ripple mdui-hidden-md-up" id="clear" mdui-dialog="{target: '#warning-dialog'}" type="button"><i class="mdui-icon material-icons">delete</i></button>
+                        </div>
+                    </form>
+                    <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-block" id="start" onclick="startRandom()"><span>开始</span></button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="mdui-dialog" id="about-dialog">
+        <div class="mdui-dialog-title">关于 About</div>
+        <div class="mdui-dialog-content mdui-typo">
+            <p>本网站由 <a href="https://github.com/0And1Story" target="_blank" mdui-tooltip="{content: 'GitHub'}">0And1Story</a> 开发</p>
+            <p class="mdui-typo-title">使用方法：</p>
+            <ol>
+                <li>在文本框内输入要添加的条目，支持批量添加（使用空格/换行/逗号/顿号/etc.分割条目）</li>
+                <li>点击<code>添加</code>（手机端为<code><i class="mdui-icon material-icons">add</i></code>）或点击<kbd>回车键</kbd>即可添加/批量添加条目</li>
+                <li>若要删除条目，可点击表格右侧的<code><i class="mdui-icon material-icons">close</i></code></li>
+                <li>若要删除所有条目，可点击添加按钮旁的<code>清除所有</code>（手机端为<code><i class="mdui-icon material-icons">delete</i></code>）</li>
+                <li>点击<code>开始</code>即可生成随机条目</li>
+            </ol>
+            <p class="mdui-typo-title">联系作者：</p>
+            <p>若需要报告BUG或联系开发者，请转至 <a href="https://github.com/0And1Story/random/issues" target="_blank" mdui-tooltip="{content: 'GitHub Issues'}">此项目的 Issues</a> </p>
+            <p class="mdui-typo-title">目前BUG：</p>
+            <blockquote>
+                <p>无</p>
+            </blockquote>
+            <br>
+            <p>Copyright © 2020 | Developed by <a href="https://github.com/0And1Story" target="_blank">0And1Story</a> | Published on <a href="https://github.com/0And1Story/random" target="_blank">GitHub</a></p>
+        </div>
+        <div class="mdui-dialog-actions">
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close>我知道了</button>
+        </div>
+    </div>
+    <div class="mdui-dialog" id="warning-dialog">
+        <div class="mdui-dialog-title">确认清除？</div>
+        <div class="mdui-dialog-content mdui-typo">你将失去此前添加的所有条目！</div>
+        <div class="mdui-dialog-actions">
+            <button class="mdui-btn mdui-ripple mdui-color-red-accent" onclick="delAllData()" mdui-dialog-confirm>确认 OK</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-cancel>取消 Cancel</button>
+        </div>
+    </div>
+</body>
+</html>
